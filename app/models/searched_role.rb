@@ -1,4 +1,4 @@
-class ArtistRole < ActiveRecord::Base
+class SearchedRole < ActiveRecord::Base
   belongs_to  :user
   belongs_to  :role
 
