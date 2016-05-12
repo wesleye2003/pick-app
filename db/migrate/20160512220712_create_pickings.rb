@@ -3,6 +3,7 @@ class CreatePickings < ActiveRecord::Migration
     create_table :pickings do |t|
       t.integer   :sender_id
       t.integer   :receiver_id
+      t.boolean   :status
 
       t.timestamps null: false
     end
