@@ -1,0 +1,2 @@
+class ArtistRolesController < ApplicationController
+end
