@@ -1,0 +1,2 @@
+class GenreSelectionsController < ApplicationController
+end

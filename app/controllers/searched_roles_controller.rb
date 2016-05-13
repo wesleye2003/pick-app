@@ -1,0 +1,2 @@
+class SearchedRolesController < ApplicationController
+end
