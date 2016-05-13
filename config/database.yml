@@ -81,5 +81,5 @@ test:
 production:
   <<: *default
   database: pick_production
-  username: welamin
+  username: pick
   password: <%= ENV['PICK_DATABASE_PASSWORD'] %>
