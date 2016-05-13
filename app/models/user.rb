@@ -13,6 +13,18 @@ class User < ActiveRecord::Base
   has_many  :searched_roles
   has_many  :s_roles, through: :searched_roles, source: :role
 
+  # SOUNDCLOUD_USER_ID        =   "b438fba7603a31dc48a8ca2dd68208ae"
+  # SOUNDCLOUD_CLIENT_SECRET  =   "f120405ccadb81498d01d00ce68fcefd"
+
+  def self.create_from_soundcloud(access_token)
+
+  create! do |user|
+    user.soundcloud_user_id = soundcloud_user["id"]
+    user.soundcloud_access_token = access_token["access_token"]
+    end
+  end
+
+
   def pickings
     pickings = []
     Picking.where(sender: self, status: true).each do |pic|
