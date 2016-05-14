@@ -4,6 +4,6 @@ class UsersController < ApplicationController
 	end
 
 	def callback
-		
+		p params
 	end
 end

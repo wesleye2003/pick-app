@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'users#index'
 
-  post '/callback' => "users#callback"
+  get '/callback' => "users#callback"
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
