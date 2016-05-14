@@ -6,9 +6,10 @@ class UsersController < ApplicationController
 
 	def callback
 		# create client object with app credentials
-		client = Soundcloud.new(:client_id => '50e414afb9a9f00311445bd1b9990164',
-		                        :client_secret => 'b599269690a3b1ce433c9fa3de01be74',
-		                        :redirect_uri => 'http://localhost:3000/callback')
+		client = Soundcloud.new({:client_id => ENV['SOUNDCLOUD_CLIENT_ID'],
+					                  :client_secret => ENV['SOUNDCLOUD_CLIENT_SECRET'],
+		                        :redirect_uri => 'http://localhost:3000/callback',
+		                        :display => 'popup'})
 
 		# exchange authorization code for access token
 		code = params[:code]
@@ -16,19 +17,18 @@ class UsersController < ApplicationController
 			redirect_to "/"
 		else
 			access_token = client.exchange_token(:code => code)
-			p access_token.access_token
-			sc_user = Soundcloud.new(:access_token => access_token.access_token)
-			sc_user = sc_user.get('/me')
-			user = User.new(soundcloud_id: sc_user.id)
-			p user
-			# if user.save
-				# session[:user_id] = User.id
-				p "Username:" + sc_user.username
-				p "Avatar Url: " + sc_user.avatar_url
-				p "Url: " + sc_user.permalink_url
-			# end
+			sc_auth = Soundcloud.new(:access_token => access_token.access_token)
+			sc_user = sc_auth.get('/me')
+			user = User.find_or_initialize_by(username: sc_user.username,
+																				avatar_url: sc_user.avatar_url,
+																				permalink: sc_user.permalink_url,
+																				soundcloud_id: sc_user.id)
+			user.soundcloud_access_token = access_token.access_token
+			if user.save
+				session[:user_id] = user.soundcloud_access_token
+			end
 		end
 
 	end
+
 end
-d
