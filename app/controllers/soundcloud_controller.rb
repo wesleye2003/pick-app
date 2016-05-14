@@ -4,43 +4,42 @@ class SoundcloudController < ApplicationController
     SOUNDCLOUD_CLIENT_ID="b438fba7603a31dc48a8ca2dd68208ae"
     SOUNDCLOUD_CLIENT_SECRET="f120405ccadb81498d01d00ce68fcefd"
 
-
   def connect
-  # create client object with app credentials
-  client = Soundcloud.new(:client_id => SOUNDCLOUD_CLIENT_ID,
-                        :client_secret => SOUNDCLOUD_CLIENT_SECRET,
-                        :redirect_uri => "http://localhost:3000/soundcloud/oauth-callback",
-                        :response_type => "code")
-
-  # redirect user to authorize URL
-  redirect_to client.authorize_url(:grant_type => 'authorization_code', :scope => 'non-expiring', :display => 'popup')
+    redirect_to soundcloud_client.authorize_url(:display => "popup")
   end
 
   def connected
-    # create client object with app credentials
-    # client = Soundcloud.new(:client_id => ENV["SOUNDCLOUD_CLIENT_ID"],
-    client = Soundcloud.new(:client_id => "SOUNDCLOUD_CLIENT_ID",
-                        :client_secret => "SOUNDCLOUD_CLIENT_SECRET",
-                        :redirect_uri => "http://localhost:3000/soundcloud/oauth-callback")
-    # exchange authorization code for access token
-    p params
-    # access_token =
-    code = params[:code]
-    access_token = client.exchange_token(:code => code)
-    client = Soundcloud.new(:access_token => access_token["access_token"])
-    # make an authenticated call
-    soundcloud_user = client.get('/me')
-    unless User.where(:soundcloud_user_id => soundcloud_user["id"]).present?
-      User.create_from_soundcloud(soundcloud_user, access_token)
+    if params[:error].nil?
+      soundcloud_client.exchange_token(:code => params[:code])
+      me = soundcloud_client.get("/me")
+      p me.id
+
+      login_as User.find_or_create_by({
+        :soundcloud_user_id  => me.id,
+        :soundcloud_username => me.username
+      })
+
+      current_user.update_attributes!({
+        :soundcloud_access_token  => soundcloud_client.access_token,
+        :soundcloud_refresh_token => soundcloud_client.refresh_token,
+        :soundcloud_expires_at    => soundcloud_client.expires_at,
+      })
     end
-    sign_in_user = User.where(:soundcloud_user_id => soundcloud_user["id"])
-    #create user sessions
-    session[:user_id] = sign_in_user.first.id
-    redirect_to root_url, notice: "Signed in!"
+    render :layout => false
   end
 
-  def destroy
-    session[:user_id] = nil
-    redirect_to root_url, notice: "Logged out!"
+  def disconnect
+    login_as nil
+    redirect_to root_path
   end
+
+private
+
+  def soundcloud_client
+    return @soundcloud_client if @soundcloud_client
+    @soundcloud_client = User.soundcloud_client(:redirect_uri  => soundcloud_connected_url)
+  end
+
+
+
 end

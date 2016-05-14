@@ -2,17 +2,20 @@ Rails.application.routes.draw do
   # get 'soundcloud/connect'
   # get 'soundcloud/connected'
   # get 'soundcloud/destroy'
+  root :to => "welcome#index"
 
-  get '/soundcloud/connect',    :to => 'soundcloud#connect'
-  get '/soundcloud/oauth-callback' =>  'soundcloud#connected'
-  get '/logout', to: 'soundcloud#destroy', as: 'logout'
+  get '/you',           :to => 'welcome#show',    :as => :you
+  get '/you/update',    :to => 'welcome#update',  :as => :you_update
 
+  get '/soundcloud/connect',    :to => 'soundcloud#connect',    :as => :soundcloud_connect
+  get '/soundcloud/connected',  :to => 'soundcloud#connected',  :as => :soundcloud_connected
+  get '/soundcloud/disconnect', :to => 'soundcloud#disconnect', :as => :soundcloud_disconnect
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root 'users#index'
+  # root 'users#index'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
