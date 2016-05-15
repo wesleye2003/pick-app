@@ -16,11 +16,11 @@ class SessionsController < ApplicationController
     end
   end
 
-  # def destroy
-  #   id = params[:id]
-  #   session
-  #   status 200
-  # end
+  def destroy
+    user_id = params[:id]
+    session.delete(:user_id)
+    status 200
+  end
 
   private
 

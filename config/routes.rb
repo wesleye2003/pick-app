@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   get '/soundcloud/connected',  :to => 'soundcloud#connected',  :as => :soundcloud_connected
   get '/soundcloud/disconnect', :to => 'soundcloud#disconnect', :as => :soundcloud_disconnect
 
-  put '/login'   => 'sessions#create'
+  post '/login'   => 'sessions#create'
   delete  '/logout' => 'sessions#destroy'
 
 
