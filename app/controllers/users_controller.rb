@@ -1,12 +1,11 @@
 require 'soundcloud'
 class UsersController < ApplicationController
 
-
 	def create 
 		@user = User.new(params)
 		if @user.save
 			status 200
-			render :json @user
+			render json: @user
 		else
 			status 400
 		end
@@ -14,23 +13,19 @@ class UsersController < ApplicationController
 
 	def show
 		@user = User.find(params[:id])
-		render :json @user
+		render json: @user
 	end
 
 	def by_zip	
 		@users = User.where(zipcode: params[:zip])
-		render :json @users
+		render json: @users
 	end	
 
 	def pickings
 		@user = User.find(params[:id])
 		@pickings = @user.pickings
-		render :json @pickings
+		render json: @pickings
 	end
-
-	# def index
-		
-	# end
 
 	# def callback
 	# 	# create client object with app credentials

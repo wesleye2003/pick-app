@@ -15,14 +15,14 @@ class SoundcloudController < ApplicationController
       p me.id
 
       login_as User.find_or_create_by({
-        :soundcloud_user_id  => me.id,
-        :soundcloud_username => me.username
+        :soundcloud_id  => me.id,
+        :username => me.username
       })
 
       current_user.update_attributes!({
-        :soundcloud_access_token  => soundcloud_client.access_token,
-        :soundcloud_refresh_token => soundcloud_client.refresh_token,
-        :soundcloud_expires_at    => soundcloud_client.expires_at,
+        :soundcloud_access_token  => soundcloud_client.access_token
+        # :soundcloud_refresh_token => soundcloud_client.refresh_token,
+        # :soundcloud_expires_at    => soundcloud_client.expires_at,
       })
     end
     render :layout => false
