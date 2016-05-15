@@ -1,7 +1,7 @@
 class RolesController < ApplicationController
 
   def index
-    @roles = Roll.all
+    @roles = Role.all
     render json: @roles
   end
 
