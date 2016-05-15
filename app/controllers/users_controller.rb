@@ -2,7 +2,8 @@ require 'soundcloud'
 class UsersController < ApplicationController
 
 	def create 
-		@user = User.new(params)
+		@user = User.new(username: params[:username],
+										 password: params[:password])
 		if @user.save
 			status 200
 			render json: @user
