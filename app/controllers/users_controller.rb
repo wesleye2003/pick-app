@@ -5,10 +5,9 @@ class UsersController < ApplicationController
 		@user = User.new(username: params[:username],
 										 password: params[:password])
 		if @user.save
-			status 200
 			render json: @user
 		else
-			status 400
+			400
 		end
 	end
 
