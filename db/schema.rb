@@ -58,16 +58,16 @@ ActiveRecord::Schema.define(version: 20160512232006) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.integer  "soundcloud_user_id"
-    t.string   "soundcloud_username"
+    t.string   "username"
+    t.string   "permalink"
+    t.string   "avatar_url"
     t.string   "soundcloud_access_token"
-    t.string   "soundcloud_refresh_token"
-    t.datetime "soundcloud_expires_at"
+    t.integer  "soundcloud_id"
     t.text     "description"
     t.string   "zipcode"
-    t.integer  "soundcloud_id"
-    t.datetime "created_at",               null: false
-    t.datetime "updated_at",               null: false
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+
   end
 
 end
