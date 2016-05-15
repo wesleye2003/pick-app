@@ -6,7 +6,7 @@ class SearchedRolesController < ApplicationController
 
   def destroy
     role = Role.find(params[:id])
-    s_role = current_user.s_roles.find_by(:role_id)
-    s_role.destroy
+    searched_role = current_user.searched_roles.find_by(:role_id)
+    searched_role.destroy
   end
 end
