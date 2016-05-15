@@ -1,9 +1,21 @@
 Rails.application.routes.draw do
+  # get 'soundcloud/connect'
+  # get 'soundcloud/connected'
+  # get 'soundcloud/destroy'
+  root :to => "welcome#index"
+
+  get '/you',           :to => 'welcome#show',    :as => :you
+  get '/you/update',    :to => 'welcome#update',  :as => :you_update
+
+  get '/soundcloud/connect',    :to => 'soundcloud#connect',    :as => :soundcloud_connect
+  get '/soundcloud/connected',  :to => 'soundcloud#connected',  :as => :soundcloud_connected
+  get '/soundcloud/disconnect', :to => 'soundcloud#disconnect', :as => :soundcloud_disconnect
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root 'users#index'
+  # root 'users#index'
 
   get '/callback' => "users#callback"
 
@@ -14,7 +26,7 @@ Rails.application.routes.draw do
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
 
   # Example resource route (maps HTTP verbs to controller actions automatically):
-  #   resources :products
+    resources :roles
 
   # Example resource route with options:
   #   resources :products do
