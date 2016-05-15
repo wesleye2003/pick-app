@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
+  has_secure_password
 
-  validates   :soundcloud_id, presence: true, uniqueness: true
   has_many  :genre_selections
   has_many  :genres, through: :genre_selections
   has_many  :artist_roles
@@ -10,7 +10,7 @@ class User < ActiveRecord::Base
   has_many  :sent_pickings, class_name: "Picking", foreign_key: :sender_id
 
   has_many  :requested_picks, through: :sent_pickings, source: :receiver
-  has_many  :pick_requests, through: :received_picks, source: :sender
+  has_many  :pick_requests, through: :received_pickings, source: :sender
 
   has_many  :searched_roles
   has_many  :s_roles, through: :searched_roles, source: :role
@@ -82,8 +82,21 @@ class User < ActiveRecord::Base
     requests
   end
 
-  def request(sender)
-    Picking.where(sender: sender, receiver: self, status: false)
+  def approve_picking(other_user)
+    p = self.sent_pickings.find_by(receiver_id: other_user.id)
+    q = self.received_pickings.find_by(sender_id: other_user.id)
+    if p
+      p.status = true
+      p.save
+    end
+    if q
+      q.status = true
+      q.save
+    end
+  end
+
+  def request(receiver)
+    Picking.create(sender_id: self.id, receiver_id: receiver.id, status: false)
   end
 
   def is_picking?(user)
