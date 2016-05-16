@@ -2,11 +2,11 @@ class SessionsController < ApplicationController
   def create
     username = params[:username]
     password = params[:password]
-    @user = User.find_by(username: username)
-    if @user
-      if @user.authenticate(password)
-        session[:user_id] = @user.id
-        render json: @user
+    user = User.find_by(username: username)
+    if user
+      if user.authenticate(password)
+        session[:user_id] = user.id
+        render json: user
       else
         400
       end

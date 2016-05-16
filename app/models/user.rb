@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
   has_secure_password
+  validates :username, presence: true, uniqueness: true
 
   has_many  :genre_selections
   has_many  :genres, through: :genre_selections
