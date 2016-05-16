@@ -20,6 +20,8 @@ Rails.application.routes.draw do
 
   get '/users/:id/genres' => 'users#my_genres'
 
+  get 'users/:id/searched_roles' => 'users#searched_roles'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

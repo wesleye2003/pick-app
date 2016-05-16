@@ -2,42 +2,47 @@ require 'soundcloud'
 class UsersController < ApplicationController
 
 	def create
-		@user = User.new(username: params[:username],
+		user = User.new(username: params[:username],
 										 password: params[:password])
-		if @user.save
-			render json: @user
+		if user.save
+			render json: user
 		else
 			400
 		end
 	end
 
 	def show
-		@user = User.find(params[:id])
-		render json: @user
+		user = User.find(params[:id])
+		render json: user
 	end
 
 	def by_zip
-		@users = User.where(zipcode: params[:zip])
-		render json: @users
+		users = User.where(zipcode: params[:zip])
+		render json: users
 	end
 
 	def pickings
-		@user = User.find(params[:id])
-		@pickings = @user.pickings
-		render json: @pickings
+		user = User.find(params[:id])
+		pickings = user.pickings
+		render json: pickings
 	end
 
 	def my_roles
-		@user = User.find(params[:id])
-		@my_roles = @user.roles
-		 render json: @my_roles
+		user = User.find(params[:id])
+		my_roles = user.roles
+		 render json: my_roles
 	end
 
 	def my_genres
-		@user = User.find(params[:id])
-		@my_genres = @user.genres
-		 render json: @my_genres
+		user = User.find(params[:id])
+		my_genres = user.genres
+		 render json: my_genres
+	end
 
+	def searched_roles
+		user = User.find(params[:id])
+		searched_users = user.s_roles
+		render json: searched_users
 	end
 
 
