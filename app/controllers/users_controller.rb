@@ -16,6 +16,16 @@ class UsersController < ApplicationController
 		render json: user
 	end
 
+
+	def update
+		user = User.find(params[:id])
+		 if user.update(params)
+		 	200
+    else
+			400
+    end
+	end
+
 	def by_zip
 		users = User.where(zipcode: params[:zip])
 		render json: users
