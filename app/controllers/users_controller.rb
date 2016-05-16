@@ -20,7 +20,8 @@ class UsersController < ApplicationController
 	def update
 		user = User.find(params[:id])
 		 if user.update(user_params)
-		 	200
+		 	message = {'status' => 'Changes Saved Successfully.'}
+			render :json => message
     else
 			400
     end
