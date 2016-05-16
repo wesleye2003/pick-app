@@ -11,7 +11,7 @@ class SoundcloudController < ApplicationController
       soundcloud_client.exchange_token(:code => params[:code])
       me = soundcloud_client.get("/me")
       user = User.find(session[:user_id])
-      current_user.update_attributes!({
+      user.update_attributes!({
         :soundcloud_id  => me.id,
         :permalink => me.permalink_url,
         :avatar_url => me.avatar_url,
