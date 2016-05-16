@@ -1,7 +1,7 @@
 require 'soundcloud'
 class UsersController < ApplicationController
 
-	def create 
+	def create
 		@user = User.new(username: params[:username],
 										 password: params[:password])
 		if @user.save
@@ -16,16 +16,32 @@ class UsersController < ApplicationController
 		render json: @user
 	end
 
-	def by_zip	
+	def by_zip
 		@users = User.where(zipcode: params[:zip])
 		render json: @users
-	end	
+	end
 
 	def pickings
 		@user = User.find(params[:id])
 		@pickings = @user.pickings
 		render json: @pickings
 	end
+
+	def my_roles
+		@user = User.find(params[:id])
+		@my_roles = @user.roles
+		 render json: @my_roles
+	end
+
+	def my_genres
+		@user = User.find(params[:id])
+		@my_genres = @user.genres
+		 render json: @my_genres
+
+	end
+
+
+
 
 	# def callback
 	# 	# create client object with app credentials
