@@ -2,6 +2,7 @@ class RolesController < ApplicationController
 
   def index
     @roles = Role.all
+    puts @roles
     render json: @roles
   end
 
