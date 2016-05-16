@@ -41,7 +41,12 @@ class UsersController < ApplicationController
 
 	def searched_roles
 		user = User.find(params[:id])
-		searched_users = user.s_roles
+		searched_roles = user.s_roles
+		searched_users = []
+		searched_roles.each do |role|
+			searched_users.push(role.users)
+		end
+		searched_users.flatten!.uniq!
 		render json: searched_users
 	end
 
