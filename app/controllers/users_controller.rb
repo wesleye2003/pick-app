@@ -19,7 +19,7 @@ class UsersController < ApplicationController
 
 	def update
 		user = User.find(params[:id])
-		 if user.update(params)
+		 if user.update(user_params)
 		 	200
     else
 			400
@@ -63,7 +63,10 @@ class UsersController < ApplicationController
 	end
 
 
-
+	private
+	def user_params
+    params.require(:user).permit(:username, :email, :password, :permalink, :avatar_url, :soundcloud_access_token, :soundcloud_id, :description, :zipcode)
+  end
 
 	# def callback
 	# 	# create client object with app credentials
