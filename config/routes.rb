@@ -19,7 +19,7 @@ Rails.application.routes.draw do
 
   get '/users/:id/roles' => 'users#my_roles'
 
-  put '/users/:id/roles' =< 'users#update_all_roles'
+  put '/users/:id/roles' => 'users#update_all_roles'
 
   get '/users/:id/genres' => 'users#my_genres'
 
