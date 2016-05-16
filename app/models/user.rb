@@ -16,8 +16,8 @@ class User < ActiveRecord::Base
   has_many  :searched_roles
   has_many  :s_roles, through: :searched_roles, source: :role
 
-  SOUNDCLOUD_CLIENT_ID="b438fba7603a31dc48a8ca2dd68208ae"
-  SOUNDCLOUD_CLIENT_SECRET="f120405ccadb81498d01d00ce68fcefd"
+    SOUNDCLOUD_CLIENT_ID='50e414afb9a9f00311445bd1b9990164'
+    SOUNDCLOUD_CLIENT_SECRET="b599269690a3b1ce433c9fa3de01be74"
 
 
   def self.soundcloud_client(options={})

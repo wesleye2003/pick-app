@@ -1,10 +1,8 @@
 require 'soundcloud'
 class SoundcloudController < ApplicationController
 
-    SOUNDCLOUD_CLIENT_ID="b438fba7603a31dc48a8ca2dd68208ae"
-    SOUNDCLOUD_CLIENT_SECRET="f120405ccadb81498d01d00ce68fcefd"
-
   def connect
+    session[:user_id] = params[:id]
     redirect_to soundcloud_client.authorize_url(:display => "popup")
   end
 
@@ -12,18 +10,14 @@ class SoundcloudController < ApplicationController
     if params[:error].nil?
       soundcloud_client.exchange_token(:code => params[:code])
       me = soundcloud_client.get("/me")
-      p me.id
-
-      login_as User.find_or_create_by({
+      user = User.find(session[:user_id])
+      user.update_attributes!({
         :soundcloud_id  => me.id,
-        :username => me.username
+        :permalink => me.permalink_url,
+        :avatar_url => me.avatar_url,
+        :soundcloud_access_token  => soundcloud_client.access_token
       })
 
-      current_user.update_attributes!({
-        :soundcloud_access_token  => soundcloud_client.access_token
-        # :soundcloud_refresh_token => soundcloud_client.refresh_token,
-        # :soundcloud_expires_at    => soundcloud_client.expires_at,
-      })
     end
     render :layout => false
   end
