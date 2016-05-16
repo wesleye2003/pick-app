@@ -5,6 +5,7 @@ class SoundcloudController < ApplicationController
     SOUNDCLOUD_CLIENT_SECRET="f120405ccadb81498d01d00ce68fcefd"
 
   def connect
+    session[:user_id] = params[:id]
     redirect_to soundcloud_client.authorize_url(:display => "popup")
   end
 
