@@ -47,6 +47,8 @@ class UsersController < ApplicationController
 			searched_users.push(role.users)
 		end
 		searched_users.flatten!.uniq!
+		searched_users.delete_if {|searched_user| user.pickings.include?(searched_user)}
+		searched_users.delete_if {|searched_user| user.pending_picks.include?(searched_user)}
 		render json: searched_users
 	end
 
