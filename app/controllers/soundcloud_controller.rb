@@ -13,18 +13,14 @@ class SoundcloudController < ApplicationController
     if params[:error].nil?
       soundcloud_client.exchange_token(:code => params[:code])
       me = soundcloud_client.get("/me")
-      p me.id
-
-      login_as User.find_or_create_by({
-        :soundcloud_id  => me.id,
-        :username => me.username
-      })
-
+      user = User.find(session[:user_id])
       current_user.update_attributes!({
+        :soundcloud_id  => me.id,
+        :permalink => me.permalink_url,
+        :avatar_url => me.avatar_url,
         :soundcloud_access_token  => soundcloud_client.access_token
-        # :soundcloud_refresh_token => soundcloud_client.refresh_token,
-        # :soundcloud_expires_at    => soundcloud_client.expires_at,
       })
+
     end
     render :layout => false
   end
