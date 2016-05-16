@@ -40,6 +40,19 @@ class UsersController < ApplicationController
 
 	end
 
+	def update_all_roles
+		id = params[:id]
+		params.delete(:id)
+		user = User.find(id)
+		user.roles.each do |role|
+			role.destroy
+		end
+		params.delete(:id)
+		params.each do |role|
+			ArtistRole.new(user_id: id, role_id: role[id])
+		end
+	end
+
 
 
 
