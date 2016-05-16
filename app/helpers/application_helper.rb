@@ -11,11 +11,11 @@ module ApplicationHelper
 
   def login_as(user)
     @current_user = user
-    session[:current_user_id] = user.try(:id)
+    session[:user_id] = user.try(:id)
   end
 
   def login_from_session
-    @current_user = User.find_by_id(session[:current_user_id])
+    @current_user = User.find_by_id(session[:user_id])
   end
 
 end
