@@ -6,7 +6,7 @@ module ApplicationHelper
 
 
   def current_user
-    @current_user ||= 
+    @current_user
   end
 
   def login_as(user)

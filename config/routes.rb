@@ -7,7 +7,8 @@ Rails.application.routes.draw do
   get '/you',           :to => 'welcome#show',    :as => :you
   get '/you/update',    :to => 'welcome#update',  :as => :you_update
 
-  get '/soundcloud/connect/:id',    :to => 'soundcloud#connect',    :as => :soundcloud_connect
+  get '/soundcloud/connect/',    :to => 'soundcloud#connect',    :as => :soundcloud_connect
+  get '/soundcloud/connect/:id',    :to => 'soundcloud#connect',    :as => :soundcloud_connect_xhr
   get '/soundcloud/connected',  :to => 'soundcloud#connected',  :as => :soundcloud_connected
   get '/soundcloud/disconnect', :to => 'soundcloud#disconnect', :as => :soundcloud_disconnect
 
