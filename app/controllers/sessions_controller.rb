@@ -6,13 +6,12 @@ class SessionsController < ApplicationController
     if @user
       if @user.authenticate(password)
         session[:user_id] = @user.id
-        status 200
         render json: @user
       else
-        status 400
+        400
       end
     else
-      status 400
+      400
     end
   end
 
