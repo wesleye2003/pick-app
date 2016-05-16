@@ -20,6 +20,10 @@ Rails.application.routes.draw do
 
   get '/users/:id/genres' => 'users#my_genres'
 
+  delete 'users/:user_id/roles/:id' => 'artist_roles#destroy'
+
+  post 'users/:user_id/roles/:id' => 'artist_roles#create'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

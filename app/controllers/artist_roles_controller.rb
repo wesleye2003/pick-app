@@ -1,14 +1,14 @@
 class ArtistRolesController < ApplicationController
 
   def create
-    role = Role.find(params[:role_id])
-    current_user.roles << role
+    artist_role = ArtistRole.find_or_create_by(role_id: params[:id], user_id: params[:user_id])
   end
 
   def destroy
-    role = Role.find(params[:id])
-    artist_role = current_user.artist_roles.find_by(:role_id)
-    artist_role.destroy
+    artist_role = ArtistRole.find_by(role_id: params[:id], user_id: params[:user_id])
+    if artist_role
+    	artist_role.destroy
+    end
   end
 
 end
