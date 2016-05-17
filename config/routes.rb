@@ -24,17 +24,17 @@ Rails.application.routes.draw do
 
   get '/users/:id/roles' => 'users#my_roles'
 
-  delete 'users/:id/roles' => 'artist_roles#destroy'
+  delete '/users/:id/roles' => 'artist_roles#destroy'
 
-  post 'users/:user_id/roles/:id' => 'artist_roles#create'
+  post '/users/:user_id/roles/:id' => 'artist_roles#create'
 
   ### User search roles ###
 
-  get 'users/:id/searched_roles' => 'users#searched_roles'
+  get '/users/:id/searched_roles' => 'users#searched_roles'
 
-  delete 'users/:id/searched_roles' => 'searched_roles#destroy'
+  delete '/users/:id/searched_roles' => 'searched_roles#destroy'
 
-  post 'users/:user_id/searched_roles/:id' => 'searched_roles#create'
+  post '/users/:user_id/searched_roles/:id' => 'searched_roles#create'
 
   ### User genres ###
 
