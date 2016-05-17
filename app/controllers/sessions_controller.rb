@@ -9,9 +9,13 @@ class SessionsController < ApplicationController
         render json: user
       else
         400
+        message = {'error' => 'username and password could not be authenticated.'}
+        render :json => message
       end
     else
       400
+      message = {'error' => 'username and password could not be authenticated.'}
+      render :json => message
     end
   end
 
