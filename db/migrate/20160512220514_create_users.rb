@@ -9,6 +9,7 @@ class CreateUsers < ActiveRecord::Migration
       t.integer :soundcloud_id
       t.text    :description
       t.string  :zipcode
+      t.string  :city
 
       t.timestamps null: false
     end

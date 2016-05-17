@@ -66,6 +66,7 @@ ActiveRecord::Schema.define(version: 20160512232006) do
     t.integer  "soundcloud_id"
     t.text     "description"
     t.string   "zipcode"
+    t.string   "city"
     t.datetime "created_at",              null: false
     t.datetime "updated_at",              null: false
   end
