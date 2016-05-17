@@ -24,6 +24,16 @@ Rails.application.routes.draw do
 
   get '/users/:id/genres' => 'users#my_genres'
 
+  delete '/users/:id/genres' => 'selected_genres#destroy'
+
+  put '/users/:id/genres' => 'selected_genres#create'
+
+  get '/users/:id/searched_genres' => 'users#searched_genres'
+
+  delete '/users/:id/searched_genres' => 'searched_genres#destroy'
+
+  put '/users/:id/selected_genres' => 'selected_genres#create'
+
   get 'users/:id/searched_roles' => 'users#searched_roles'
 
   delete 'users/:id/searched_roles' => 'searched_roles#destroy'
@@ -33,7 +43,6 @@ Rails.application.routes.draw do
   delete 'users/:id/roles' => 'artist_roles#destroy'
 
   put 'users/:user_id/roles/:id' => 'artist_roles#create'
-
 
 
   # The priority is based upon order of creation: first created -> highest priority.
