@@ -193,12 +193,12 @@ guitar.users << [david, ryan, joe, jim, stevie, dave, frank]
 bass.users << [wes, ryan, eric, sami]
 
 # Add Genres
-rock << [david, lisa, joe, sami, dave, frank]
-hip_hop << [wes, ryan, andre, tom, drake]
-jazz << [wes, mason, jack, dom, jim, stevie, ray]
-funk << [david, ryan, lisa, eric, jim, james]
-classic << [josh, jack, alex, sami, drake]
-alt << [dom, joe, eric, tom, dave, frank]
+rock.users << [david, lisa, joe, sami, dave, frank]
+hip_hop.users << [wes, ryan, andre, tom, drake]
+jazz.users << [wes, mason, jack, dom, jim, stevie, ray]
+funk.users << [david, ryan, lisa, eric, jim, james]
+classic.users << [josh, jack, alex, sami, drake]
+alt.users << [dom, joe, eric, tom, dave, frank]
 
 #Add Requests
 drake.request(wes)
