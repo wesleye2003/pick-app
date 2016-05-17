@@ -1,7 +1,7 @@
 class ArtistRolesController < ApplicationController
 
   def create
-  	artist = User.find(params[:id])
+  	artist = User.find(params[:user_id])
     artist_role = ArtistRole.find_or_create_by(role_id: params[:id], user_id: params[:user_id])
     message = {'status' => 'Changes Saved Successfully.'}
 		render :json => message
