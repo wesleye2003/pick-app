@@ -51,6 +51,24 @@ class UsersController < ApplicationController
 		 render json: my_genres
 	end
 
+  def nearby_zips(zip)
+    #start with blank array
+    zips = []
+    zip_api_key = 'OqnfG0f7f7dfPhxfUlOSfRi4O0CJqxgfYEuEFKLURZaHgHWb3K3iCmmrmZbNws2v'
+    radius_in_miles = "10"
+    #assemble the URL
+    url = "https://www.zipcodeapi.com/rest/#{zip_api_key}/radius.json/#{zip}/#{radius_in_miles}/mile"
+    #hit the API, get a JSON object
+    zip_hash = HTTParty.get(url)
+    #get the data from the JSON object
+    zip_array = zip_hash["zip_codes"]
+    #iterate over the items in the JSON object and shovel into an output array
+    zip_array.each do |zip_object|
+      zips << zip_object["zip_code"]
+    end
+    zips
+  end
+
 	def searched_roles
 		user = User.find(params[:id])
 		searched_roles = user.s_roles
@@ -61,6 +79,9 @@ class UsersController < ApplicationController
 		searched_users.flatten!.uniq!
 		searched_users.delete_if {|searched_user| user.pickings.include?(searched_user)}
 		searched_users.delete_if {|searched_user| user.pending_picks.include?(searched_user)}
+		acceptable_zips = nearby_zips(user.zipcode)
+		searched_users.keep_if {|searched_user| acceptable_zips.include?(searched_user.zipcode)}
+
 		render json: searched_users
 	end
 
