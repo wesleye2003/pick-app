@@ -14,7 +14,8 @@ class UsersController < ApplicationController
 	def create
 		user = User.new(username: params[:username],
 										 password: params[:password],
-                     zipcode: params[:zipcode])
+                     zipcode: params[:zipcode],
+                     avatar_url: 'images/pick.png')
     city = find_city(user.zipcode)
     user.city = city unless city.empty?
 		if user.save
