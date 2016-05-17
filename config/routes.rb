@@ -24,7 +24,7 @@ Rails.application.routes.draw do
 
   get 'users/:id/searched_roles' => 'users#searched_roles'
 
-  delete 'users/:user_id/roles' => 'artist_roles#destroy'
+  delete 'users/:id/roles' => 'artist_roles#destroy'
 
   put 'users/:user_id/roles/:id' => 'artist_roles#create'
 
