@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   get '/soundcloud/disconnect', :to => 'soundcloud#disconnect', :as => :soundcloud_disconnect
 
   post '/login'   => 'sessions#create'
+
   delete  '/logout' => 'sessions#destroy'
 
   get '/users/:id/pickings'   => 'pickings#index'
@@ -23,9 +24,10 @@ Rails.application.routes.draw do
 
   get 'users/:id/searched_roles' => 'users#searched_roles'
 
-  delete 'users/:user_id/roles/:id' => 'artist_roles#destroy'
+  delete 'users/:id/roles' => 'artist_roles#destroy'
 
-  post 'users/:user_id/roles/:id' => 'artist_roles#create'
+  put 'users/:user_id/roles/:id' => 'artist_roles#create'
+
 
 
   # The priority is based upon order of creation: first created -> highest priority.
