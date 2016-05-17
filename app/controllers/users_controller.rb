@@ -106,7 +106,7 @@ class UsersController < ApplicationController
 
 	def searched_roles
 		user = User.find(params[:id])
-		searched_roles = user.searched_roles
+		searched_roles = user.s_roles
 		if searched_roles
 			render json: searched_roles
 		else
