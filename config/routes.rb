@@ -26,7 +26,7 @@ Rails.application.routes.draw do
 
   delete 'users/:id/roles' => 'artist_roles#destroy'
 
-  post 'users/:user_id/roles' => 'artist_roles#create'
+  post 'users/:user_id/roles/:id' => 'artist_roles#create'
 
   ### User search roles ###
 
@@ -34,7 +34,7 @@ Rails.application.routes.draw do
 
   delete 'users/:id/searched_roles' => 'searched_roles#destroy'
 
-  post 'users/:user_id/searched_roles' => 'searched_roles#create'
+  post 'users/:user_id/searched_roles/:id' => 'searched_roles#create'
 
   ### User genres ###
 
@@ -42,7 +42,7 @@ Rails.application.routes.draw do
 
   delete '/users/:id/genres' => 'selected_genres#destroy'
 
-  post '/users/:id/genres' => 'selected_genres#create'
+  post '/users/:user_id/genres/:id' => 'selected_genres#create'
 
   ### User search genres ###
 
@@ -50,7 +50,7 @@ Rails.application.routes.draw do
 
   delete '/users/:id/searched_genres' => 'searched_genres#destroy'
 
-  post '/users/:id/searched_genres' => 'searched_genres#create'
+  post '/users/:user_id/searched_genres/:id' => 'searched_genres#create'
 
 
 
