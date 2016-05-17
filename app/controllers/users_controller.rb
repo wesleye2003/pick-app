@@ -12,10 +12,11 @@ class UsersController < ApplicationController
   end
 
 	def create
+		# TODO: add method to reference dynamic image url
 		user = User.new(username: params[:username],
 										 password: params[:password],
                      zipcode: params[:zipcode],
-                     avatar_url: 'pick.png')
+                     avatar_url: 'http://i.imgur.com/yPyPWD4.png')
     city = find_city(user.zipcode)
     user.city = city unless city.empty?
 		if user.save
