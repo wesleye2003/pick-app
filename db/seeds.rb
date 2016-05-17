@@ -187,7 +187,7 @@ ray.save
 
 # Add Roles
 piano.users << [josh, mason, andre, jack, alex, dom, ray]
-drums.users << [ryan, andre, lisa, sami, tom]
+drum.users << [ryan, andre, lisa, sami, tom]
 vocal.users << [david, tom, stevie, james, drake, dave, frank, ray]
 guitar.users << [david, ryan, joe, jim, stevie, dave, frank]
 bass.users << [wes, ryan, eric, sami]
