@@ -12,10 +12,11 @@ class UsersController < ApplicationController
   end
 
 	def create
+		# TODO: add method to reference dynamic image url
 		user = User.new(username: params[:username],
 										 password: params[:password],
                      zipcode: params[:zipcode],
-                     avatar_url: 'images/pick.png')
+                     avatar_url: 'http://i.imgur.com/yPyPWD4.png')
     city = find_city(user.zipcode)
     user.city = city unless city.empty?
 		if user.save
@@ -88,11 +89,12 @@ class UsersController < ApplicationController
 		searched_roles.each do |role|
 			searched_users.push(role.users)
 		end
-		searched_users.flatten!.uniq!
+		searched_users.flatten!.uniq!.shuffle!
 		searched_users.delete_if {|searched_user| user.pickings.include?(searched_user)}
 		searched_users.delete_if {|searched_user| user.pending_picks.include?(searched_user)}
 		acceptable_zips = nearby_zips(user.zipcode)
 		searched_users.keep_if {|searched_user| acceptable_zips.include?(searched_user.zipcode)}
+		searched_users.delete(user)
 
 		render json: searched_users
 	end
