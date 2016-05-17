@@ -30,6 +30,8 @@ Rails.application.routes.draw do
 
   ### User search roles ###
 
+  get '/searched_roles/:id/users' => 'users#searched_users'
+
   get '/users/:id/searched_roles' => 'users#searched_roles'
 
   delete '/users/:id/searched_roles' => 'searched_roles#destroy'
