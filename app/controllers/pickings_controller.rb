@@ -37,6 +37,7 @@ class PickingsController < ApplicationController
     else
         user1.request(user2)
     end
+    render json: {success: true}
   end
 
 
