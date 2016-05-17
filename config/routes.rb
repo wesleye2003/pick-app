@@ -42,9 +42,9 @@ Rails.application.routes.draw do
 
   get '/users/:id/genres' => 'users#my_genres'
 
-  delete '/users/:id/genres' => 'selected_genres#destroy'
+  delete '/users/:id/genres' => 'genre_selections#destroy'
 
-  post '/users/:user_id/genres/:id' => 'selected_genres#create'
+  post '/users/:user_id/genres/:id' => 'genre_selections#create'
 
   ### User search genres ###
 
