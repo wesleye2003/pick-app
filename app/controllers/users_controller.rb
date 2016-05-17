@@ -15,7 +15,7 @@ class UsersController < ApplicationController
 		user = User.new(username: params[:username],
 										 password: params[:password],
                      zipcode: params[:zipcode],
-                     avatar_url: 'images/pick.png')
+                     avatar_url: 'pick.png')
     city = find_city(user.zipcode)
     user.city = city unless city.empty?
 		if user.save
