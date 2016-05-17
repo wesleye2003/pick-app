@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
   has_secure_password
   validates :username, presence: true, uniqueness: true
+  validates :zipcode, presence: true
 
   has_many  :genre_selections
   has_many  :genres, through: :genre_selections
@@ -18,7 +19,6 @@ class User < ActiveRecord::Base
 
     SOUNDCLOUD_CLIENT_ID='50e414afb9a9f00311445bd1b9990164'
     SOUNDCLOUD_CLIENT_SECRET="b599269690a3b1ce433c9fa3de01be74"
-
 
   def self.soundcloud_client(options={})
     options = {

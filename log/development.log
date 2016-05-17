@@ -1,2 +1,0 @@
-  [1m[36mUser Load (0.9ms)[0m  [1mSELECT  "users".* FROM "users"  ORDER BY "users"."id" ASC LIMIT 1[0m
-  [1m[35mGenre Load (0.9ms)[0m  SELECT "genres".* FROM "genres" INNER JOIN "genre_selections" ON "genres"."id" = "genre_selections"."genre_id" WHERE "genre_selections"."user_id" = $1  [["user_id", 4]]

@@ -1,9 +1,23 @@
 require 'soundcloud'
 class UsersController < ApplicationController
 
+  # zip_api_key = 'OqnfG0f7f7dfPhxfUlOSfRi4O0CJqxgfYEuEFKLURZaHgHWb3K3iCmmrmZbNws2v'
+
+  def find_city(user_zip)
+    zip_api_key = 'OqnfG0f7f7dfPhxfUlOSfRi4O0CJqxgfYEuEFKLURZaHgHWb3K3iCmmrmZbNws2v'
+    # url = "https://www.zipcodeapi.com/rest/#{zip_api_key}/info.json/#{user.zipcode}/degrees"
+    url = "https://www.zipcodeapi.com/rest/OqnfG0f7f7dfPhxfUlOSfRi4O0CJqxgfYEuEFKLURZaHgHWb3K3iCmmrmZbNws2v/info.json/#{user_zip}/degrees"
+    response = HTTParty.get(url)
+    city = response["city"]
+  end
+
 	def create
 		user = User.new(username: params[:username],
-										 password: params[:password])
+										 password: params[:password],
+                     zipcode: params[:zipcode],
+                     avatar_url: 'images/pick.png')
+    city = find_city(user.zipcode)
+    user.city = city unless city.empty?
 		if user.save
 			render json: user
 		else
@@ -16,10 +30,13 @@ class UsersController < ApplicationController
 		render json: user
 	end
 
-
 	def update
 		user = User.find(params[:id])
-		 if user.update(user_params)
+    if params[:zipcode]
+      city = find_city(params[:zipcode])
+      user_params[:city] = city unless city.empty?
+    end
+		if user.update(user_params)
 		 	message = {'status' => 'Changes Saved Successfully.'}
 			render :json => message
     else
@@ -52,18 +69,13 @@ class UsersController < ApplicationController
 	end
 
   def nearby_zips(zip)
-    #start with blank array
-    zips = []
     zip_api_key = 'OqnfG0f7f7dfPhxfUlOSfRi4O0CJqxgfYEuEFKLURZaHgHWb3K3iCmmrmZbNws2v'
-    radius_in_miles = "10"
-    #assemble the URL
-    url = "https://www.zipcodeapi.com/rest/#{zip_api_key}/radius.json/#{zip}/#{radius_in_miles}/mile"
-    #hit the API, get a JSON object
-    zip_hash = HTTParty.get(url)
-    #get the data from the JSON object
-    zip_array = zip_hash["zip_codes"]
-    #iterate over the items in the JSON object and shovel into an output array
-    zip_array.each do |zip_object|
+    zips = [] #start with blank array
+    radius_in_miles = "10" #this can be configured, of course
+    url = "https://www.zipcodeapi.com/rest/#{zip_api_key}/radius.json/#{zip}/#{radius_in_miles}/mile" #assemble the URL
+    zip_hash = HTTParty.get(url) #hit the API, get a JSON object
+    zip_array = zip_hash["zip_codes"] #get the data from the JSON object
+    zip_array.each do |zip_object| #iterate over the items in the JSON object and shovel into an output array
       zips << zip_object["zip_code"]
     end
     zips
