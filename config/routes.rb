@@ -22,7 +22,9 @@ Rails.application.routes.draw do
 
   get '/users/:id/genres' => 'users#my_genres'
 
-  get 'users/:id/searched_roles' => 'users#searched_roles'
+  delete 'users/:id/searched_roles' => 'searched_roles#destroy'
+
+  put 'users/:user_id/searched_roles/:id' => 'searched_roles#create'
 
   delete 'users/:id/roles' => 'artist_roles#destroy'
 
