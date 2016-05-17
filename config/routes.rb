@@ -48,11 +48,11 @@ Rails.application.routes.draw do
 
   ### User search genres ###
 
-  get '/users/:id/searched_genres' => 'users#searched_genres'
+  # get '/users/:id/searched_genres' => 'users#searched_genres'
 
-  delete '/users/:id/searched_genres' => 'searched_genres#destroy'
+  # delete '/users/:id/searched_genres' => 'searched_genres#destroy'
 
-  post '/users/:user_id/searched_genres/:id' => 'searched_genres#create'
+  # post '/users/:user_id/searched_genres/:id' => 'searched_genres#create'
 
 
 
