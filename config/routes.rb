@@ -18,7 +18,7 @@ Rails.application.routes.draw do
 
   get '/users/:id/pickings'   => 'pickings#index'
 
-  post '/users/:user_id/pickings/id'   => 'pickings#create'
+  post '/users/:user_id/pickings/:id'   => 'pickings#create'
 
   get '/users/:id/roles' => 'users#my_roles'
 
