@@ -82,23 +82,38 @@ class UsersController < ApplicationController
     zips
   end
 
-	def searched_roles
+	def searched_users
 		user = User.find(params[:id])
 		searched_roles = user.s_roles
 		searched_users = []
 		searched_roles.each do |role|
 			searched_users.push(role.users)
 		end
-		searched_users.flatten!.uniq!.shuffle!
-		searched_users.delete_if {|searched_user| user.pickings.include?(searched_user)}
-		searched_users.delete_if {|searched_user| user.pending_picks.include?(searched_user)}
-		acceptable_zips = nearby_zips(user.zipcode)
-		searched_users.keep_if {|searched_user| acceptable_zips.include?(searched_user.zipcode)}
-		searched_users.delete(user)
+		if searched_users
+			searched_users.flatten!.uniq!.shuffle!
+			searched_users.delete_if {|searched_user| user.pickings.include?(searched_user)}
+			searched_users.delete_if {|searched_user| user.pending_picks.include?(searched_user)}
+			acceptable_zips = nearby_zips(user.zipcode)
+			searched_users.keep_if {|searched_user| acceptable_zips.include?(searched_user.zipcode)}
+			searched_users.delete(user)
 
-		render json: searched_users
+			render json: searched_users
+		else
+			400
+			render json: {'status' => 'No potential picks found.'}
+		end
 	end
 
+	def searched_roles
+		user = User.find(params[:id])
+		searched_roles = user.searched_roles
+		if searched_roles
+			render json: searched_roles
+		else
+			400
+			render json: {'status' => 'No searched roles found. Change your search criteria!'}
+		end
+	end
 
 	private
 	def user_params
