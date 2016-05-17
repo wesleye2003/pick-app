@@ -20,29 +20,39 @@ Rails.application.routes.draw do
 
   post '/users/:user_id/pickings/:id'   => 'pickings#create'
 
+  ### User roles ###
+
   get '/users/:id/roles' => 'users#my_roles'
 
-  get '/users/:id/genres' => 'users#my_genres'
+  delete 'users/:id/roles' => 'artist_roles#destroy'
 
-  delete '/users/:id/genres' => 'selected_genres#destroy'
+  post 'users/:user_id/roles' => 'artist_roles#create'
 
-  put '/users/:id/genres' => 'selected_genres#create'
-
-  get '/users/:id/searched_genres' => 'users#searched_genres'
-
-  delete '/users/:id/searched_genres' => 'searched_genres#destroy'
-
-  put '/users/:id/selected_genres' => 'selected_genres#create'
+  ### User search roles ###
 
   get 'users/:id/searched_roles' => 'users#searched_roles'
 
   delete 'users/:id/searched_roles' => 'searched_roles#destroy'
 
-  put 'users/:user_id/searched_roles/:id' => 'searched_roles#create'
+  post 'users/:user_id/searched_roles' => 'searched_roles#create'
 
-  delete 'users/:id/roles' => 'artist_roles#destroy'
+  ### User genres ###
 
-  put 'users/:user_id/roles/:id' => 'artist_roles#create'
+  get '/users/:id/genres' => 'users#my_genres'
+
+  delete '/users/:id/genres' => 'selected_genres#destroy'
+
+  post '/users/:id/genres' => 'selected_genres#create'
+
+  ### User search genres ###
+
+  get '/users/:id/searched_genres' => 'users#searched_genres'
+
+  delete '/users/:id/searched_genres' => 'searched_genres#destroy'
+
+  post '/users/:id/searched_genres' => 'searched_genres#create'
+
+
 
 
   # The priority is based upon order of creation: first created -> highest priority.
