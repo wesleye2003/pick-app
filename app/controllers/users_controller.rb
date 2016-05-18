@@ -18,7 +18,7 @@ class UsersController < ApplicationController
                      zipcode: params[:zipcode],
                      avatar_url: 'http://i.imgur.com/yPyPWD4.png')
     city = find_city(user.zipcode)
-    user.city = city unless city.empty?
+    user.city = city unless city == nil
 		if user.save
 			render json: user
 		else
@@ -72,7 +72,7 @@ class UsersController < ApplicationController
   def nearby_zips(zip)
     zip_api_key = 'OqnfG0f7f7dfPhxfUlOSfRi4O0CJqxgfYEuEFKLURZaHgHWb3K3iCmmrmZbNws2v'
     zips = [] #start with blank array
-    radius_in_miles = "10" #this can be configured, of course
+    radius_in_miles = "50" #this can be configured, of course
     url = "https://www.zipcodeapi.com/rest/#{zip_api_key}/radius.json/#{zip}/#{radius_in_miles}/mile" #assemble the URL
     zip_hash = HTTParty.get(url) #hit the API, get a JSON object
     zip_array = zip_hash["zip_codes"] #get the data from the JSON object
@@ -88,7 +88,7 @@ class UsersController < ApplicationController
 		searched_users = []
 		searched_roles.each do |role|
 			searched_users.push(role.users)
-		end
+		endu =
 		if searched_users
 			searched_users.flatten!.uniq!.shuffle!
 			searched_users.delete_if {|searched_user| user.pickings.include?(searched_user)}
