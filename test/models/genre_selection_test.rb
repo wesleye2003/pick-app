@@ -20,4 +20,9 @@ class GenreSelectionTest < ActiveSupport::TestCase
   end
 
 
+  # test "genre selections are properly assigned to artists" do
+  #   assert @artist.genre_selections.count == 1
+  # end
+
+
 end
