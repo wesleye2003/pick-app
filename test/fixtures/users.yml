@@ -4,4 +4,12 @@
 # model remove the '{}' from the fixture names and add the columns immediately
 # below each fixture, per the syntax in the comments below
 #
+mick:
+  username: "Mick Jagger"
+  password_digest: password
 
+
+jimi:
+  username: Jimi Hendrix
+  zipcode: '60622'
+  password_digest: password
