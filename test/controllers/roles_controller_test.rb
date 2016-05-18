@@ -5,3 +5,4 @@ class RolesControllerTest < ActionController::TestCase
   #   assert true
   # end
 end
+
