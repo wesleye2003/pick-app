@@ -5,4 +5,11 @@
 # below each fixture, per the syntax in the comments below
 #
 
-# a_r:
+# --- !omap
+# - arole:
+#     user_id: users(:jimi).id
+#     role_id: roles(:xyl).id
+
+# # ar:
+# #   user_id: 2 #users(:jimi).id
+# #   role_id: 3 #roles(:xyl).id
