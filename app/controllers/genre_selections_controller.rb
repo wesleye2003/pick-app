@@ -1,7 +1,6 @@
 class GenreSelectionsController < ApplicationController
 
   def create
-    artist = User.find(params[:id])
     artist_genre = GenreSelection.find_or_create_by(genre_id: params[:id], user_id: params[:user_id])
     message = {'status' => 'Changes Saved Successfully.'}
     render :json => message
