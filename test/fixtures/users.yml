@@ -4,8 +4,19 @@
 # model remove the '{}' from the fixture names and add the columns immediately
 # below each fixture, per the syntax in the comments below
 #
-one: {}
-# column: value
-#
-two: {}
-#  column: value
+john:
+  username:     John Lennon
+  zipcode:  60609
+
+paul:
+  username:     Paul McCartney
+  zipcode:  60608
+
+george:
+  username:     George Harrison
+  zipcode:  60607
+
+ringo:
+  username:     Ringo Starr
+  zipcode:  60606
+
