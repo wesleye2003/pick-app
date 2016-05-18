@@ -42,7 +42,8 @@ class UsersController < ApplicationController
 			render :json => message
     else
 			400
-			message = {'status' => 'Changes could not be applied.'}
+			message = {'error' => 'Changes could not be applied.'}
+      render :json => message
     end
 	end
 
