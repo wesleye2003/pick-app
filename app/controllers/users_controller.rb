@@ -93,7 +93,9 @@ class UsersController < ApplicationController
 		end
 
 		if searched_users.count > 0
-			searched_users.flatten!.uniq!.shuffle!
+			searched_users.flatten!
+      searched_users.uniq!
+      searched_users.shuffle!
 			searched_users.delete_if {|searched_user| user.pickings.include?(searched_user)}
 			searched_users.delete_if {|searched_user| user.pending_picks.include?(searched_user)}
 			# acceptable_zips = nearby_zips(user.zipcode)
