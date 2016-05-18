@@ -88,13 +88,14 @@ class UsersController < ApplicationController
 		searched_users = []
 		searched_roles.each do |role|
 			searched_users.push(role.users)
-		endu =
-		if searched_users
+		end
+
+		if searched_users.count > 0
 			searched_users.flatten!.uniq!.shuffle!
 			searched_users.delete_if {|searched_user| user.pickings.include?(searched_user)}
 			searched_users.delete_if {|searched_user| user.pending_picks.include?(searched_user)}
-			acceptable_zips = nearby_zips(user.zipcode)
-			searched_users.keep_if {|searched_user| acceptable_zips.include?(searched_user.zipcode)}
+			# acceptable_zips = nearby_zips(user.zipcode)
+			# searched_users.keep_if {|searched_user| acceptable_zips.include?(searched_user.zipcode)}
 			searched_users.delete(user)
 
 			render json: searched_users
