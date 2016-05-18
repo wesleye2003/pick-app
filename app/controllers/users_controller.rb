@@ -89,7 +89,7 @@ class UsersController < ApplicationController
 		searched_roles.each do |role|
 			searched_users.push(role.users)
 		end
-		if searched_users
+		if searched_users.count > 0
 			searched_users.flatten!.uniq!.shuffle!
 			searched_users.delete_if {|searched_user| user.pickings.include?(searched_user)}
 			searched_users.delete_if {|searched_user| user.pending_picks.include?(searched_user)}
