@@ -19,10 +19,12 @@ class UsersController < ApplicationController
                      avatar_url: 'http://i.imgur.com/yPyPWD4.png')
     city = find_city(user.zipcode)
     user.city = city unless city == nil
+
 		if user.save
 			render json: user
 		else
 			400
+      render nothing: true
 		end
 	end
 
