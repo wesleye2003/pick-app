@@ -12,7 +12,6 @@ class GenreSelectionsControllerTest < ActionController::TestCase
     end
 
   test "test should destroy a genre selection" do
-    p users(:jimi).genre_selections.count
     assert_difference('GenreSelection.count', -1) do
       delete :destroy, :id => users(:jimi).id
     end
