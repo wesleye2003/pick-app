@@ -112,8 +112,22 @@ class UsersController < ApplicationController
 			# acceptable_zips = nearby_zips(user.zipcode)
 			# searched_users.keep_if {|searched_user| acceptable_zips.include?(searched_user.zipcode)}
 			searched_users.delete(user)
-
-			render json: searched_users
+			users_searched_for = []
+			searched_users.each do |this_user|
+				users_searched_for.push({username: this_user.username,
+																password_digest: this_user.password_digest,
+																permalink: this_user.permalink,
+																avatar_url: this_user.avatar_url,
+																soundcloud_access_token: this_user.soundcloud_access_token,
+																soundcloud_id: this_user.soundcloud_id,
+																description: this_user.description,
+																zipcode: this_user.zipcode,
+																city: this_user.city,
+																roles: this_user.roles,
+																genres: this_user.genres
+																})
+			end
+			render json: users_searched_for
 		else
 			400
 			render json: {'status' => 'No potential picks found.'}
