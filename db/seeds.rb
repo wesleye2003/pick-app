@@ -31,14 +31,14 @@ piano = Role.create(name: "Pianist/Keys")
 
 
 wes = User.new(username: "Wesley El-Amin",
-		   description: "The best bassist in the place...ist.",
+		   description: "I bring the bass every place I go.",
 		   zipcode: '60610',
                avatar_url: 'http://i.imgur.com/yPyPWD4.png')
 wes.password = "password"
 wes.city = 'Chicago'
 wes.save
 
-josh = User.new(username: "Josh Lugo",
+josh = User.new(username: "joshulu",
 		     description: "Piano is the (pentatonic) key to my heart.",
 	           zipcode: '60506',
                  avatar_url: 'http://i.imgur.com/yPyPWD4.png')
@@ -48,19 +48,19 @@ josh.save
 
 david = User.new(username: "David Kaiser",
 		     description: "Rock Dove by day, Rock Demigod by night.",
-		     zipcode: '60610',
+		     zipcode: '60201',
                  avatar_url: 'http://i.imgur.com/yPyPWD4.png')
 david.password = "password"
 david.city = 'Chicago'
 david.save
 
-ryan = User.new(username: "Ryan Dempsey",
+erica = User.new(username: "Erica",
             description: "",
-            zipcode: '60610',
+            zipcode: '60611',
             avatar_url: 'http://i.imgur.com/yPyPWD4.png')
-ryan.password = "password"
-ryan.city = 'Chicago'
-ryan.save
+erica.password = "password"
+erica.city = 'Chicago'
+erica.save
 
 mason = User.new(username: "Mason Pierce",
             description: "",
