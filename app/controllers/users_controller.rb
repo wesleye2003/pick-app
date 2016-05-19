@@ -29,8 +29,19 @@ class UsersController < ApplicationController
 	end
 
 	def show
-		user = User.find(params[:id])
-		render json: user
+		this_user = User.find(params[:id])
+		render json: {username: this_user.username,
+									password_digest: this_user.password_digest,
+									permalink: this_user.permalink,
+									avatar_url: this_user.avatar_url,
+									soundcloud_access_token: this_user.soundcloud_access_token,
+									soundcloud_id: this_user.soundcloud_id,
+									description: this_user.description,
+									zipcode: this_user.zipcode,
+									city: this_user.city,
+									roles: this_user.roles,
+									genres: this_user.genres
+								}
 	end
 
 	def update
