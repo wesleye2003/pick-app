@@ -13,3 +13,12 @@ jimi:
   username: Jimi Hendrix
   zipcode: '60622'
   password_digest: password
+
+gaga:
+  username: Lady gaga
+  zipcode:  '60608'
+  password_digest:  password
+
+
+
+
