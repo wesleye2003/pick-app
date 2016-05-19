@@ -13,8 +13,7 @@ class PickingsController < ApplicationController
     user1 = User.find(params[:user_id])
     user2 = User.find(params[:id])
     if user1.pending_picks.include?(user2)
-        picking = Picking.find_by(sender_id: user1.id, receiver_id: user2.id)
-        picking.status = true
+        user1.approve_picking(user2)
         picking.save
     else
         user1.request(user2)
