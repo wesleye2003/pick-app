@@ -30,7 +30,8 @@ class UsersController < ApplicationController
 
 	def show
 		this_user = User.find(params[:id])
-		render json: {username: this_user.username,
+		render json: {id: this_user.id,
+									username: this_user.username,
 									password_digest: this_user.password_digest,
 									permalink: this_user.permalink,
 									avatar_url: this_user.avatar_url,
@@ -114,7 +115,8 @@ class UsersController < ApplicationController
 			searched_users.delete(user)
 			users_searched_for = []
 			searched_users.each do |this_user|
-				users_searched_for.push({username: this_user.username,
+				users_searched_for.push({id: this_user.id,
+																username: this_user.username,
 																password_digest: this_user.password_digest,
 																permalink: this_user.permalink,
 																avatar_url: this_user.avatar_url,
