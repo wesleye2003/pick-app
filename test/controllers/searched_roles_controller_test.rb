@@ -2,15 +2,15 @@ require 'test_helper'
 
 class SearchedRolesControllerTest < ActionController::TestCase
 
-  # test "should create a searched role" do
-  #   p users(:jimi).id
-  #   assert_difference('SearchedRole.count') do
-  #     post :create,
-  #       role_id: roles(:xyl).id,
-  #       id: users(:jimi).id
-  #   end
-  # end
-
+  test "controller should create a searched role" do
+    assert_difference('SearchedRole.count') do
+     post :create, {
+        :user_id => users(:jimi).id,
+        :id => roles(:xyl).id
+      }
+      end
+    # assert_redirected_to post_path(assigns(:post))
+    end
 end
 
 # post :create, story: @story.attributes, user_id: @user.id

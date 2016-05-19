@@ -9,6 +9,7 @@ class GenreSelectionsController < ApplicationController
   def destroy
     artist = User.find(params[:id])
     artist_genres = artist.genre_selections
+    # p artist.genre_selections.count
     if artist_genres
       artist_genres.destroy_all
       message = {'status' => 'Genres erased successfully.'}
