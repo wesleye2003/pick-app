@@ -7,3 +7,11 @@
 xyl:
   name: xylophonist
 
+bass:
+  name: bassist
+
+guitar:
+  name: guitarist
+
+vocal:
+  name: vocalist
