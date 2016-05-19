@@ -10,4 +10,18 @@ class ArtistRolesControllerTest < ActionController::TestCase
       end
     # assert_redirected_to post_path(assigns(:post))
     end
+
+  test "test should destroy an artist role combo" do
+    assert_difference('ArtistRole.count', -1) do
+      delete :destroy, :id => users(:gaga).id
+    end
+  end
+
+
+
+
+
+
+
+
 end
