@@ -31,14 +31,14 @@ piano = Role.create(name: "Pianist/Keys")
 
 
 wes = User.new(username: "Wesley El-Amin",
-		   description: "The best bassist in the place...ist.",
+		   description: "I bring the bass every place I go.",
 		   zipcode: '60610',
                avatar_url: 'http://i.imgur.com/yPyPWD4.png')
 wes.password = "password"
 wes.city = 'Chicago'
 wes.save
 
-josh = User.new(username: "Josh Lugo",
+josh = User.new(username: "joshulu",
 		     description: "Piano is the (pentatonic) key to my heart.",
 	           zipcode: '60506',
                  avatar_url: 'http://i.imgur.com/yPyPWD4.png')
@@ -48,107 +48,20 @@ josh.save
 
 david = User.new(username: "David Kaiser",
 		     description: "Rock Dove by day, Rock Demigod by night.",
-		     zipcode: '60610',
+		     zipcode: '60201',
                  avatar_url: 'http://i.imgur.com/yPyPWD4.png')
 david.password = "password"
 david.city = 'Chicago'
 david.save
 
-ryan = User.new(username: "Ryan Dempsey",
-            description: "No description yet.",
-            zipcode: '60610',
-            avatar_url: 'http://i.imgur.com/yPyPWD4.png')
-ryan.password = "password"
-ryan.city = 'Chicago'
-ryan.save
 
-mason = User.new(username: "Mason Pierce",
-            description: "No description yet.",
-            zipcode: '60610',
+erica = User.new(username: "Erica",
+            description: "",
+            zipcode: '60611',
             avatar_url: 'http://i.imgur.com/yPyPWD4.png')
-mason.password = "password"
-mason.city = 'Chicago'
-mason.save
-
-andre = User.new(username: "Andre Slonski",
-            description: "No description yet.",
-            zipcode: '60610',
-            avatar_url: 'http://i.imgur.com/yPyPWD4.png')
-andre.password = "password"
-andre.city = 'Chicago'
-andre.save
-
-jack = User.new(username: "Jack Thatcher",
-            description: "No description yet.",
-            zipcode: '60610',
-            avatar_url: 'http://i.imgur.com/yPyPWD4.png')
-jack.password = "password"
-jack.city = 'Chicago'
-jack.save
-
-alex = User.new(username: "Alex Wen",
-            description: "No description yet.",
-            zipcode: '60610',
-            avatar_url: 'http://i.imgur.com/yPyPWD4.png')
-alex.password = "password"
-alex.city = 'Chicago'
-alex.save
-
-lisa = User.new(username: "Lisa Dannewitz",
-            description: "No description yet.",
-            zipcode: '60610',
-            avatar_url: 'http://i.imgur.com/yPyPWD4.png')
-lisa.password = "password"
-lisa.city = 'Chicago'
-lisa.save
-
-dom = User.new(username: "Dominick Lombardo",
-            description: "No description yet.",
-            zipcode: '60610',
-            avatar_url: 'http://i.imgur.com/yPyPWD4.png')
-dom.password = "password"
-dom.city = 'Chicago'
-dom.save
-
-joe = User.new(username: "Joe Scott",
-            description: "No description yet.",
-            zipcode: '60610',
-            avatar_url: 'http://i.imgur.com/yPyPWD4.png')
-joe.password = "password"
-joe.city = 'Chicago'
-joe.save
-
-eric = User.new(username: "Eric Tenza",
-            description: "No description yet.",
-            zipcode: '60610',
-            avatar_url: 'http://i.imgur.com/yPyPWD4.png')
-eric.password = "password"
-eric.city = 'Chicago'
-eric.save
-
-jim = User.new(username: "Jim O'Neal",
-            description: "No description yet.",
-            zipcode: '60610',
-            avatar_url: 'http://i.imgur.com/yPyPWD4.png')
-jim.password = "password"
-jim.city = 'Chicago'
-jim.save
-
-tom = User.new(username: "Tomasz Sok",
-            description: "No description yet.",
-            zipcode: '60610',
-            avatar_url: 'http://i.imgur.com/yPyPWD4.png')
-tom.password = "password"
-tom.city = 'Chicago'
-tom.save
-
-sami = User.new(username: "Sami Zhang",
-            description: "No description yet.",
-            zipcode: '60610',
-            avatar_url: 'http://i.imgur.com/yPyPWD4.png')
-sami.password = "password"
-sami.city = 'Chicago'
-sami.save
+erica.password = "password"
+erica.city = 'Chicago'
+erica.save
 
 dave = User.new(username: "Dave Hostios",
             description: "No description yet.",
@@ -157,7 +70,6 @@ dave = User.new(username: "Dave Hostios",
 dave.password = "password"
 dave.city = 'Chicago'
 dave.save
-
 
 stevie = User.new(username: "Stevie Ray",
                    description: "I play guitar and sing.",
@@ -198,29 +110,6 @@ ray = User.new(username: "Ray Charles",
 ray.password = "password"
 ray.city = 'Chicago'
 ray.save
-
-
-# wes
-# josh
-# david
-# ryan
-# mason
-# andre
-# jack
-# alex
-# lisa
-# dom
-# joe
-# eric
-# jim 
-# tom
-# sami
-# dave
-# stevie
-# james
-# drake
-# frank
-# ray
 
 # Add Roles
 piano.users << [josh, mason, andre, jack, alex, dom, ray]
