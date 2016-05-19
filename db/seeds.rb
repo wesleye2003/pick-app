@@ -55,7 +55,7 @@ david.city = 'Chicago'
 david.save
 
 ryan = User.new(username: "Ryan Dempsey",
-            description: "",
+            description: "No description yet.",
             zipcode: '60610',
             avatar_url: 'http://i.imgur.com/yPyPWD4.png')
 ryan.password = "password"
@@ -63,7 +63,7 @@ ryan.city = 'Chicago'
 ryan.save
 
 mason = User.new(username: "Mason Pierce",
-            description: "",
+            description: "No description yet.",
             zipcode: '60610',
             avatar_url: 'http://i.imgur.com/yPyPWD4.png')
 mason.password = "password"
@@ -71,7 +71,7 @@ mason.city = 'Chicago'
 mason.save
 
 andre = User.new(username: "Andre Slonski",
-            description: "",
+            description: "No description yet.",
             zipcode: '60610',
             avatar_url: 'http://i.imgur.com/yPyPWD4.png')
 andre.password = "password"
@@ -79,7 +79,7 @@ andre.city = 'Chicago'
 andre.save
 
 jack = User.new(username: "Jack Thatcher",
-            description: "",
+            description: "No description yet.",
             zipcode: '60610',
             avatar_url: 'http://i.imgur.com/yPyPWD4.png')
 jack.password = "password"
@@ -87,7 +87,7 @@ jack.city = 'Chicago'
 jack.save
 
 alex = User.new(username: "Alex Wen",
-            description: "",
+            description: "No description yet.",
             zipcode: '60610',
             avatar_url: 'http://i.imgur.com/yPyPWD4.png')
 alex.password = "password"
@@ -95,7 +95,7 @@ alex.city = 'Chicago'
 alex.save
 
 lisa = User.new(username: "Lisa Dannewitz",
-            description: "",
+            description: "No description yet.",
             zipcode: '60610',
             avatar_url: 'http://i.imgur.com/yPyPWD4.png')
 lisa.password = "password"
@@ -103,7 +103,7 @@ lisa.city = 'Chicago'
 lisa.save
 
 dom = User.new(username: "Dominick Lombardo",
-            description: "",
+            description: "No description yet.",
             zipcode: '60610',
             avatar_url: 'http://i.imgur.com/yPyPWD4.png')
 dom.password = "password"
@@ -111,7 +111,7 @@ dom.city = 'Chicago'
 dom.save
 
 joe = User.new(username: "Joe Scott",
-            description: "",
+            description: "No description yet.",
             zipcode: '60610',
             avatar_url: 'http://i.imgur.com/yPyPWD4.png')
 joe.password = "password"
@@ -119,7 +119,7 @@ joe.city = 'Chicago'
 joe.save
 
 eric = User.new(username: "Eric Tenza",
-            description: "",
+            description: "No description yet.",
             zipcode: '60610',
             avatar_url: 'http://i.imgur.com/yPyPWD4.png')
 eric.password = "password"
@@ -127,7 +127,7 @@ eric.city = 'Chicago'
 eric.save
 
 jim = User.new(username: "Jim O'Neal",
-            description: "",
+            description: "No description yet.",
             zipcode: '60610',
             avatar_url: 'http://i.imgur.com/yPyPWD4.png')
 jim.password = "password"
@@ -135,7 +135,7 @@ jim.city = 'Chicago'
 jim.save
 
 tom = User.new(username: "Tomasz Sok",
-            description: "",
+            description: "No description yet.",
             zipcode: '60610',
             avatar_url: 'http://i.imgur.com/yPyPWD4.png')
 tom.password = "password"
@@ -143,7 +143,7 @@ tom.city = 'Chicago'
 tom.save
 
 sami = User.new(username: "Sami Zhang",
-            description: "",
+            description: "No description yet.",
             zipcode: '60610',
             avatar_url: 'http://i.imgur.com/yPyPWD4.png')
 sami.password = "password"
@@ -151,7 +151,7 @@ sami.city = 'Chicago'
 sami.save
 
 dave = User.new(username: "Dave Hostios",
-            description: "",
+            description: "No description yet.",
             zipcode: '60610',
             avatar_url: 'http://i.imgur.com/yPyPWD4.png')
 dave.password = "password"
